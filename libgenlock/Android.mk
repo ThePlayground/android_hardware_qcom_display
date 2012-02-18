@@ -9,8 +9,9 @@ LOCAL_SRC_FILES := genlock.cpp
 LOCAL_CFLAGS:= -DLOG_TAG=\"libgenlock\"
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := libgenlock
-include $(BUILD_SHARED_LIBRARY)
 
 ifeq ($(TARGET_USES_GENLOCK),true)
     LOCAL_CFLAGS += -DUSE_GENLOCK
 endif
+
+include $(BUILD_SHARED_LIBRARY)
