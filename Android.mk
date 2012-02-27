@@ -1,10 +1,11 @@
 #Enables the listed display HAL modules
-#Libs to be built for all targets (including SDK)
-display-hals := libqcomui libtilerenderer
 
-#libs to be built for QCOM targets only
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
-display-hals += libhwcomposer liboverlay libgralloc libgenlock libcopybit
+ifeq ($(TARGET_BOARD_PLATFORM),qsd8k)
+	display-hals := libhwcomposer libgenlock libgralloc libcopybit
+else
+	display-hals := libhwcomposer liboverlay libgenlock libgralloc libcopybit
 endif
-
-include $(call all-named-subdir-makefiles,$(display-hals))
+	display-hals += libtilerenderer libqcomui
+	include $(call all-named-subdir-makefiles,$(display-hals))
+endif
