@@ -46,11 +46,12 @@
 #define LIKELY( exp )       (__builtin_expect( (exp) != 0, true  ))
 #define UNLIKELY( exp )     (__builtin_expect( (exp) != 0, false ))
 
+#define HWC_DEBUG 0
+
 #ifdef COMPOSITION_BYPASS
 #define MAX_BYPASS_LAYERS 3
 #define BYPASS_DEBUG 0
 #define BYPASS_INDEX_OFFSET 4
-#define HWC_DEBUG 0
 
 enum BypassState {
     BYPASS_ON,
