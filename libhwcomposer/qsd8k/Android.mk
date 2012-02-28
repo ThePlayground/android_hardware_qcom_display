@@ -1,5 +1,3 @@
-ifneq ($(BOARD_USES_QCOM_LEGACY),true)
-
 LOCAL_PATH := $(call my-dir)
 
 # HAL module implemenation, not prelinked and stored in
@@ -30,5 +28,3 @@ LOCAL_C_INCLUDES += hardware/qcom/display/libqcomui
 #endif
 
 include $(BUILD_SHARED_LIBRARY)
-
-endif
