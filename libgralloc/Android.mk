@@ -34,7 +34,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS:= -DLOG_TAG=\"$(TARGET_BOARD_PLATFORM).gralloc\" -DHOST -DDEBUG_CALC_FPS
 LOCAL_CFLAGS += -DQCOM_HARDWARE
 
-ifeq ($(call is-board-platform,msm7x27),true)
+ifeq ($(TARGET_BOARD_PLATFORM),msm7x27)
     LOCAL_CFLAGS += -DTARGET_MSM7x27
 endif
 
