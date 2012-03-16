@@ -244,32 +244,6 @@ int checkBuffer(native_handle_t *buffer_handle, int size, int usage);
  */
 bool isGPUSupportedFormat(int format);
 
-/*
- * Checks if the format is natively supported by the GPU.
- * For now, we use this function to check only if CHECK_FOR_EXTERNAL_FORMAT
- * is set.
- *
- * @param: format to check
- *
- * @return true if the format is supported by the GPU.
- */
-bool isGPUSupportedFormatInHW(int format);
-
-/*
- * Adreno is not optimized for GL_TEXTURE_EXTERNAL_OES
- * texure target. DO NOT choose TEXTURE_EXTERNAL_OES
- * target for RGB formats.
- *
- * Based on the pixel format, decide the texture target.
- *
- * @param : pixel format to check
- *
- * @return : GL_TEXTURE_2D for RGB formats, and
- *           GL_TEXTURE_EXTERNAL_OES for YUV formats.
- *
-*/
-
-int decideTextureTarget (const int pixel_format);
 
 /*
  * Gets the number of arguments required for this operation.
