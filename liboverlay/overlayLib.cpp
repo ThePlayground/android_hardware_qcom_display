@@ -91,6 +91,21 @@ int overlay::get_mdp_orientation(int value) {
     return -1;
 }
 
+// Rotator - input to output mapping
+int overlay::get_rot_output_format(int format) {
+    switch (format) {
+    case MDP_Y_CRCB_H2V2_TILE:
+        return MDP_Y_CRCB_H2V2;
+    case MDP_Y_CB_CR_H2V2:
+        return MDP_Y_CBCR_H2V2;
+    case MDP_Y_CR_CB_GH2V2:
+        return MDP_Y_CRCB_H2V2;
+    default:
+        return format;
+    }
+    return -1;
+}
+
 // This function normalizes the crop values to be all even
 void overlay::normalize_crop(uint32_t& xy, uint32_t& wh) {
 
@@ -1338,6 +1353,9 @@ bool OverlayControlChannel::startOVRotatorSessions(
             mRotInfo.dst.width = (((w-1)/64 +1)*64);
             mRotInfo.dst.height = (((h-1)/32 +1)*32);
         }
+#ifndef QCOM_ROTATOR_KERNEL_FORMATS
+        mRotInfo.dst.format = get_rot_output_format(format);
+#endif
         mRotInfo.dst_x = 0;
         mRotInfo.dst_y = 0;
         mRotInfo.src_rect.x = 0;
