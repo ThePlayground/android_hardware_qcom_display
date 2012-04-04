@@ -658,7 +658,9 @@ bool Overlay::updateOverlaySource(const overlay_buffer_info& info, int orientati
     if (ret) {
         mOVBufferInfo = info;
     } else
+#ifndef BYPASS_OFFSET
         LOGE("update failed");
+#endif
     return ret;
 }
 
@@ -1585,7 +1587,9 @@ bool OverlayControlChannel::useVirtualFB() {
 
 bool OverlayControlChannel::setTransform(int value, bool fetch) {
     if (!isChannelUP()) {
+#ifndef BYPASS_OFFSET
         LOGE("%s: channel is not up", __FUNCTION__);
+#endif
         return false;
     }
 
