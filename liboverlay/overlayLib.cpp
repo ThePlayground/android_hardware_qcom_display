@@ -657,10 +657,11 @@ bool Overlay::updateOverlaySource(const overlay_buffer_info& info, int orientati
     }
     if (ret) {
         mOVBufferInfo = info;
-    } else
+    } else {
 #ifndef BYPASS_OFFSET
         LOGE("update failed");
 #endif
+    }
     return ret;
 }
 
