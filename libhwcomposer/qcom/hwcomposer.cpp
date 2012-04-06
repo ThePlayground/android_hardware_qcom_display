@@ -650,8 +650,8 @@ static int prepareOverlay(hwc_context_t *ctx, hwc_layer_t *layer, const int flag
 
         ret = ovLibObject->setTransform(layer->transform);
         if (!ret) {
-            //LOGE("prepareOverlay setTransform failed transform %x",
-            //        layer->transform);
+           // LOGE("prepareOverlay setTransform failed transform %x",
+           //         layer->transform);
             return -1;
         }
 
@@ -1541,7 +1541,6 @@ static int hwc_set(hwc_composer_device_t *dev,
         unlockPreviousOverlayBuffer(ctx);
     }
     
-
 
     bool canSkipComposition = list && list->flags & HWC_SKIP_COMPOSITION;
 #ifdef COMPOSITION_BYPASS
