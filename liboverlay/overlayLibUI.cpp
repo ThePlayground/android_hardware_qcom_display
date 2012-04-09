@@ -367,7 +367,7 @@ status_t OverlayUI::commit() {
     if (ret == NO_ERROR) {
         mChannelState = UP;
     } else {
-        LOGE("start channel failed.");
+        //LOGE("start channel failed.");
     }
     return ret;
 }
@@ -395,7 +395,7 @@ status_t OverlayUI::startOVSession() {
     mdp_overlay ovInfo = mOvInfo;
 
     if (ioctl(mobjDisplay.getFD(), MSMFB_OVERLAY_SET, &ovInfo)) {
-        LOGE("%s: Overlay set failed", __FUNCTION__);
+        //LOGE("%s: Overlay set failed", __FUNCTION__);
         ret = BAD_VALUE;
     } else {
         mSessionID = ovInfo.id;

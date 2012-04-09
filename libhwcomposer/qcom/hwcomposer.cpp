@@ -371,9 +371,7 @@ static int prepareBypass(hwc_context_t *ctx, hwc_layer_t *layer,
                                 waitForVsync, isFg, zorder, useVGPipe, nPipeIndex );
 
         if(ovUI->commit() != overlay::NO_ERROR) {
-#ifndef BYPASS_OFFSET
-            LOGE("%s: Overlay Commit failed", __FUNCTION__);
-#endif
+            //LOGE("%s: Overlay Commit failed", __FUNCTION__);
             return -1;
         }
     }
@@ -652,10 +650,8 @@ static int prepareOverlay(hwc_context_t *ctx, hwc_layer_t *layer, const int flag
 
         ret = ovLibObject->setTransform(layer->transform);
         if (!ret) {
-#ifndef BYPASS_OFFSET
-            LOGE("prepareOverlay setTransform failed transform %x",
-                    layer->transform);
-#endif
+            //LOGE("prepareOverlay setTransform failed transform %x",
+            //        layer->transform);
             return -1;
         }
 
