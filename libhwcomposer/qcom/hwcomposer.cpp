@@ -510,7 +510,7 @@ bool isMDPSupported( const hwc_layer_list_t* list ) {
         const int src_h = sourceCrop.bottom - sourceCrop.top;
 
         if(((src_w > dst_w) || (src_h > dst_h)) && needsBlending){
-
+#ifdef QCOM_HDMI_OUT
             if(not FrameBufferInfo::getInstance()->canSupportTrueMirroring()){
                 /* If the target MDP version is less than 4.2, we
                  * cannot handle alpha downscaling. In such cases bypass is
@@ -520,6 +520,7 @@ bool isMDPSupported( const hwc_layer_list_t* list ) {
                  * of identifying if the target version is less than 4.2 */
                 return false;
             }
+#endif
             if( layer_index != 1) {
                 /* We ignore layer with z-order 1 since it is assigned
                  * to RGB2 pipe which handles downscaling with alpha
